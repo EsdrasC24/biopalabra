@@ -54,9 +54,9 @@ export default function Component() {
   }
 
   return (
-    <div className="w-full max-w-3xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden border-red-500">
-      <div className="p-6 border-green-500">
-        <div className="relative w-80 h-80 mx-auto mb-8 border-orange-500">
+    <div className="w-full max-w-3xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden border border-red-500">
+      <div className="p-6 border border-green-500">
+        <div className="relative w-80 h-80 mx-auto mb-8 border border-orange-500">
           <div className="absolute inset-0 rounded-full border-4 border-blue-500">
             {__ALPHABET__.map((letter, index) => (
               <div
