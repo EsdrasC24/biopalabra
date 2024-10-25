@@ -3,7 +3,7 @@
 import './style.css';
 import { useState, useEffect } from 'react'
 
-const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWX'.split('')
+const __ALPHABET__ = 'ABCDEFGHIJKLMNOPQRSTUVWX'.split('')
 
 const definitions: { [key: string]: string } = {
   A: "Ácido: Sustancia química que puede donar protones o aceptar electrones.",
@@ -37,35 +37,35 @@ export default function Component() {
   const [rotation, setRotation] = useState(0)
 
   useEffect(() => {
-    const index = alphabet.indexOf(selectedLetter)
-    setRotation(index * (360 / alphabet.length))
+    const index = __ALPHABET__.indexOf(selectedLetter)
+    setRotation(index * (360 / __ALPHABET__.length))
   }, [selectedLetter])
 
   const handlePrevious = () => {
-    const currentIndex = alphabet.indexOf(selectedLetter)
-    const newIndex = (currentIndex - 1 + alphabet.length) % alphabet.length
-    setSelectedLetter(alphabet[newIndex])
+    const currentIndex = __ALPHABET__.indexOf(selectedLetter)
+    const newIndex = (currentIndex - 1 + __ALPHABET__.length) % __ALPHABET__.length
+    setSelectedLetter(__ALPHABET__[newIndex])
   }
 
   const handleNext = () => {
-    const currentIndex = alphabet.indexOf(selectedLetter)
-    const newIndex = (currentIndex + 1) % alphabet.length
-    setSelectedLetter(alphabet[newIndex])
+    const currentIndex = __ALPHABET__.indexOf(selectedLetter)
+    const newIndex = (currentIndex + 1) % __ALPHABET__.length
+    setSelectedLetter(__ALPHABET__[newIndex])
   }
 
   return (
-    <div className="w-full max-w-3xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
-      <div className="p-6">
-        <div className="relative w-80 h-80 mx-auto mb-8">
+    <div className="w-full max-w-3xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden border-red-500">
+      <div className="p-6 border-green-500">
+        <div className="relative w-80 h-80 mx-auto mb-8 border-orange-500">
           <div className="absolute inset-0 rounded-full border-4 border-blue-500">
-            {alphabet.map((letter, index) => (
+            {__ALPHABET__.map((letter, index) => (
               <div
                 key={letter}
                 className={`absolute w-10 h-10 flex items-center justify-center rounded-full ${
                   letter === selectedLetter ? 'bg-blue-500 text-white' : 'bg-white text-blue-500'
                 }`}
                 style={{
-                  transform: `rotate(${index * (360 / alphabet.length)}deg) translateY(-130px) rotate(-${index * (360 / alphabet.length)}deg)`,
+                  transform: `rotate(${index * (360 / __ALPHABET__.length)}deg) translateY(-130px) rotate(-${index * (360 / __ALPHABET__.length)}deg)`,
                 }}
               >
                 <span className="text-lg font-bold">{letter}</span>
