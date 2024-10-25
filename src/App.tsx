@@ -3,7 +3,13 @@
 import './style.css';
 import { useState, useEffect } from 'react'
 
+import { getRelativeCoords } from './util';
+
+//alert(JSON.stringify(getRelativeCoords(24)));
+const coords = getRelativeCoords(24);
+
 const __ALPHABET__ = 'ABCDEFGHIJKLMNOPQRSTUVWX'.split('')
+const __ROTATION_DEG__ = 360 / __ALPHABET__.length;
 
 const definitions: { [key: string]: string } = {
   A: "Ácido: Sustancia química que puede donar protones o aceptar electrones.",
@@ -33,12 +39,12 @@ const definitions: { [key: string]: string } = {
 }
 
 export default function Component() {
-  const [selectedLetter, setSelectedLetter] = useState('A')
-  const [rotation, setRotation] = useState(0)
-
+  const [selectedLetter, setSelectedLetter] = useState('A');
+  const [rotation, setRotation] = useState(0);
+  
   useEffect(() => {
-    const index = __ALPHABET__.indexOf(selectedLetter)
-    setRotation(index * (360 / __ALPHABET__.length))
+    const index = __ALPHABET__.indexOf(selectedLetter);
+    setRotation(index * __ROTATION_DEG__);
   }, [selectedLetter])
 
   const handlePrevious = () => {
@@ -54,18 +60,20 @@ export default function Component() {
   }
 
   return (
-    <div className="w-full max-w-3xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden border border-red-500">
-      <div className="p-6 border border-green-500">
-        <div className="relative w-80 h-80 mx-auto mb-8 border border-orange-500">
-          <div className="absolute inset-0 rounded-full border-4 border-blue-500">
+    <div className="w-screen h-screen bg-gray-50 shadow-lg rounded-lg overflow-hidden">
+      <div className="p-6 mx-auto w-11/12 border border-green-500">
+        <div className="relative w-80 h-80 mx-auto mb-8" data-container>
+          <div className="absolute inset-0 rounded-full border-blue-500">
             {__ALPHABET__.map((letter, index) => (
               <div
                 key={letter}
-                className={`absolute w-10 h-10 flex items-center justify-center rounded-full ${
-                  letter === selectedLetter ? 'bg-blue-500 text-white' : 'bg-white text-blue-500'
+                className={`absolute  w-10 h-10 flex items-center justify-center rounded-full ${
+                  letter === selectedLetter ? 'bg-emerald-600 text-white' : 'bg-gray-100 text-gray-500 border border-gray-500'
                 }`}
                 style={{
-                  transform: `rotate(${index * (360 / __ALPHABET__.length)}deg) translateY(-130px) rotate(-${index * (360 / __ALPHABET__.length)}deg)`,
+                  left: `${coords[index].x}%`,
+                  top:`${coords[index].y}%`,
+                  transformed: `translate(${index * __ROTATION_DEG__}deg, ${index * 10}deg)`,
                 }}
               >
                 <span className="text-lg font-bold">{letter}</span>
@@ -82,20 +90,22 @@ export default function Component() {
             <span className="text-xl font-bold text-blue-500">BioPalabra</span>
           </div>
         </div>
-        <div className="text-center mb-4">
-          <h2 className="text-2xl font-bold mb-2 text-blue-700">Letra: {selectedLetter}</h2>
+
+        <div className="text-center py-20">
+          <h2 className="text-2xl font-bold mb-2 text-emerald-800">Letra: {selectedLetter}</h2>
           <p className="text-gray-600">{definitions[selectedLetter]}</p>
         </div>
+
         <div className="flex justify-center space-x-4">
           <button 
             onClick={handlePrevious}
-            className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-colors"
+            className="px-4 py-2 bg-emerald-600 text-white rounded hover:bg-emerald-800 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:ring-opacity-50 transition-colors"
           >
             Anterior
           </button>
           <button 
             onClick={handleNext}
-            className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-colors"
+            className="px-4 py-2 bg-emerald-600 text-white rounded hover:bg-emerald-800 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-opacity-50 transition-colors"
           >
             Siguiente
           </button>
