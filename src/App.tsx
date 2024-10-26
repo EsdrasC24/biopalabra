@@ -1,6 +1,7 @@
 "use client"
 
 import './style.css';
+import portalImg from './assets/fondo-1.jpg';
 import { useState, useEffect } from 'react'
 
 import { getRelativeCoords } from './util';
@@ -35,8 +36,11 @@ export default function Component() {
   }
 
   return (
-    <div className="w-screen h-screen bg-gradient-to-br from-emerald-600 to-yellow-800 shadow-lg rounded-lg overflow-hidden flex items-center box-border">
-      <div className="p-6 mx-auto w-11/12 border border-green-500 bg-gray-50">
+    <div className="w-screen h-screen from-emerald-600 to-yellow-800 shadow-lg rounded-lg overflow-hidden flex items-center box-border">
+      <img src={portalImg} className="absolute top-0 left-0 -z-10 w-full h-full object-fill" />
+      <div className="p-6 mx-auto w-11/12 border border-green-500 bg-gray-50/90">
+        {/* title */}
+        <div className="text-2xl py-4 font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-yellow-900"><span>3er año, Sección U</span> - <span>Biología: Reto de Ciencias</span></div>
         {/* Participants */}
         <div className="flex items-center justify-between text-xl font-bold">
           {definitions.map((_, index) => {
