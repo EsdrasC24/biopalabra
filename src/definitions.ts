@@ -8,7 +8,7 @@ export function getDefinitions(): Array<DefinitionSet>{
     return [
         //1st participant
         {
-          A: 'Organismos fotosintéticos diferentes de las plantas macroscópicas y microscópicas de ambientes acuáticos y terrestres húmedos, perecientes al reino protista.',
+          A: 'Organismos fotosintéticos diferentes de las plantas macroscópicas y microscópicas de ambientes acuáticos y terrestres húmedos, pertenecientes al reino protista.',
           B: 'Microorganismos unicelulares sin núcleo diferenciado, realizan diversas funciones en la naturaleza como descomponen la materia orgánica, producir enfermedades, sintetizar moléculas.',
           C: 'Se especializan en la producción de gametos o células sexuales que permiten la formación de un nuevo individuo.',
           D: 'Organismo que posee doble juego de cromosomas.',
