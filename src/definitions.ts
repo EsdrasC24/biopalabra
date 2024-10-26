@@ -1,10 +1,10 @@
-export const letters = 'ABCDEFGHILMNOPQRSTUVX';
+export const __LETTERS__ = 'ABCDEFGHILMNOPQRSTUVX';
 
 export type DefinitionSet = {
-    [key in typeof letters[number]]: string;
+    [key in typeof __LETTERS__[number]]: string;
 }
 
-export default function getDefinitions(): Array<DefinitionSet>{
+export function getDefinitions(): Array<DefinitionSet>{
     return [
         //1st participant
         {
