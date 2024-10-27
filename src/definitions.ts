@@ -9,7 +9,7 @@ export function getDefinitions(): Array<DefinitionSet>{
         //1st participant
         {
           A: 'Organismos fotosintéticos diferentes de las plantas macroscópicas y microscópicas de ambientes acuáticos y terrestres húmedos, pertenecientes al reino protista.',
-          B: 'Microorganismos unicelulares sin núcleo diferenciado, realizan diversas funciones en la naturaleza como descomponen la materia orgánica, producir enfermedades, sintetizar moléculas.',
+          B: 'Microorganismos unicelulares sin núcleo diferenciado, realizan diversas funciones en la naturaleza como descomponer la materia orgánica, producir enfermedades, sintetizar moléculas.',
           C: 'Se especializan en la producción de gametos o células sexuales que permiten la formación de un nuevo individuo.',
           D: 'Organismo que posee doble juego de cromosomas.',
           E: 'Organismos con estructura celular, presentan organelos cubiertos por membrana, entre ellos el núcleo.',
@@ -21,12 +21,13 @@ export function getDefinitions(): Array<DefinitionSet>{
           M: 'Es el ADN o la totalidad de los cromosomas contenidos en el núcleo.',
           N: 'Región del núcleo celular en el que se encuentran el ADN , el ARN y las proteínas asociadas a ellos.',
           O: 'Estructuras contenidas en el citoplasma de las células eucariotas.',
-          Q: 'Conjunto de individuos de la misma especie que ocupan determinada área geográfica.',
+          P: 'Conjunto de individuos de la misma especie que ocupan determinada área geográfica.',
+          Q: 'Células predominantes  ( 80 %- 90%) de la epidermis  , estimula el crecimiento de las células epiteliales.',
           R: 'Es una de las formas de reproducción celular, este proceso se realiza en las glándulas sexuales para la producción de gametos.',
           S: 'Interacción estrecha entre organismos de diferentes especies durante un periodo prolongado.',
           T: 'Es la cuarta y última fase de la mitosis. Durante esta se forman los dos núcleos hijos en los dos polos de la célula.',
           U: 'Enzima que cataliza o descompone la urea en bióxido de carbono y amoniaco.',
-          V: 'Es una medida de las diferencias que existen dentro delas poblaciones o las especies.',
+          V: 'Es una medida de las diferencias que existen dentro de las poblaciones o las especies.',
           X: 'Protistas unicelulares gigantes, que pueden vivir en fosas oceánicas a profundidades de más de 10.000 metros.'
         },
         //2nd participant
