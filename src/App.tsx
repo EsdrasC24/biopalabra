@@ -4,6 +4,7 @@ import './style.css';
 import portalImg from './assets/fondo-1.jpg';
 import highschoolLogo from './assets/logo-liceo.png';
 import introAudio from './assets/intro.mp3';
+import waitAudio from './assets/preguntas.mp3';
 
 import { useState, useEffect, useRef } from 'react'
 
@@ -23,6 +24,7 @@ export default function Component() {
   const [isPlaying, setPlaying] = useState(false);
 
   const introAudioRef = useRef(null);
+  const waitAudioRef = useRef(null);
 
   useEffect(() => {
     const index = __ALPHABET__.indexOf(selectedLetter);
@@ -31,6 +33,12 @@ export default function Component() {
 
   useEffect(() => {
     if(isPlaying && introAudioRef.current){
+      introAudioRef.current.addEventListener('ended', () => {
+        waitAudioRef.current.play();
+      });
+      introAudioRef.current.addEventListener('play', () => {
+        waitAudioRef.current.pause()
+      });
       introAudioRef.current.play();
       setPlaying(false);
     }
@@ -52,6 +60,7 @@ export default function Component() {
     <div className="w-screen h-screen from-emerald-600 to-yellow-800 shadow-lg rounded-lg overflow-hidden flex items-center box-border">
       {/* hidden audio */}
       <audio src={introAudio} ref={introAudioRef} />
+      <audio src={waitAudio} loop ref={waitAudioRef} />
       <img src={portalImg} className="absolute top-0 left-0 -z-10 w-full h-full object-fill" />
       <div className="p-6 mx-auto w-11/12 border border-green-500 bg-gray-50/90">
         {/* title */}
