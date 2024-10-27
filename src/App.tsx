@@ -3,8 +3,9 @@
 import './style.css';
 import portalImg from './assets/fondo-1.jpg';
 import highschoolLogo from './assets/logo-liceo.png';
+import introAudio from './assets/intro.mp3';
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 import { getRelativeCoords } from './util';
 import { __LETTERS__, getDefinitions } from './definitions';
@@ -19,11 +20,21 @@ export default function Component() {
   const [selectedLetter, setSelectedLetter] = useState('A');
   const [rotation, setRotation] = useState(0);
   const [defIndex, setDefIndex] = useState(0); // indicates actived participant
+  const [isPlaying, setPlaying] = useState(false);
+
+  const introAudioRef = useRef(null);
 
   useEffect(() => {
     const index = __ALPHABET__.indexOf(selectedLetter);
     setRotation(index * __ROTATION_DEG__);
-  }, [selectedLetter])
+  }, [selectedLetter]);
+
+  useEffect(() => {
+    if(isPlaying && introAudioRef.current){
+      introAudioRef.current.play();
+      setPlaying(false);
+    }
+  }, [isPlaying]);
 
   const handlePrevious = () => {
     const currentIndex = __ALPHABET__.indexOf(selectedLetter)
@@ -39,6 +50,8 @@ export default function Component() {
 
   return (
     <div className="w-screen h-screen from-emerald-600 to-yellow-800 shadow-lg rounded-lg overflow-hidden flex items-center box-border">
+      {/* hidden audio */}
+      <audio src={introAudio} ref={introAudioRef} />
       <img src={portalImg} className="absolute top-0 left-0 -z-10 w-full h-full object-fill" />
       <div className="p-6 mx-auto w-11/12 border border-green-500 bg-gray-50/90">
         {/* title */}
@@ -49,9 +62,10 @@ export default function Component() {
         {/* Participants */}
         <div className="flex items-center justify-between text-xl font-bold">
           {definitions.map((_, index) => {
+            if(index == 0) return null;
             return defIndex == index ? 
-              (<div className="p-2 text-white bg-yellow-600 border rounded-lg">Participante {index + 1}</div>)
-              : (<div onClick={() => setDefIndex(index)}>Participante {index + 1}</div>);
+              (<div className="p-2 text-white bg-yellow-600 border rounded-lg">Participante {index}</div>)
+              : (<div onClick={() => {setPlaying(true); setDefIndex(index)}}>Participante {index}</div>);
           })}
         </div>
         {/* rulette box */}

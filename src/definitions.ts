@@ -6,6 +6,10 @@ export type DefinitionSet = {
 
 export function getDefinitions(): Array<DefinitionSet>{
     return [
+        // pseudo participant for sound
+        {  A:'', B:'', C:'', D:'', E:'', F:'', G:'', H:'', I:'',
+           L:'', M:'', N:'', O:'', P:'', Q:'', R:'', S:'', T:'',
+           U:'', V:'', X:''},
         //1st participant
         {
           A: 'Organismos fotosintéticos diferentes de las plantas macroscópicas y microscópicas de ambientes acuáticos y terrestres húmedos, pertenecientes al reino protista.',
